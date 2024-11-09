@@ -26,8 +26,7 @@ Armazenar os preços de cada produto.
 Oferecer os preços mais atualizados para o microsserviço Vendas.
 Ajustar os preços (como em promoções ou alterações de preço) e notificar outros microsserviços, se necessário.
 Fluxo de Integração e Arquitetura
-1. Integrações de Busca
-Busca no microsserviço de Inventário:
+1. Integrações de Busca no microsserviço de Inventário:
 
 Quando um pedido é feito, o microsserviço de Vendas faz uma chamada REST ou gRPC para o microsserviço de Inventário.
 Exemplo: GET /inventario/produto/{id} para verificar a quantidade disponível do item.
