@@ -1,14 +1,15 @@
-﻿using Exemplo;
+﻿using MicroserviceVendas;
+using MicroserviceVendas.Infra.Contexto;
 
-namespace Template.Infra
+namespace MicroserviceVendas.Infra
 {
     public static class GeradorDeServicos
     {
         public static ServiceProvider ServiceProvider;
 
-        public static DataContext CarregarContexto()
+        public static VendasContext CarregarContexto()
         {
-            return ServiceProvider.GetService<DataContext>();
+            return ServiceProvider.GetService<VendasContext>();
         }
     }
 }
