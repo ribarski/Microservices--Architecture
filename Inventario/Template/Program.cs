@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using MicroserviceInventario.Infra.Contexto;
 using MicroserviceInventario.Services;
-using MicroserviceInventario.Infra ;
+using MicroserviceInventario.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona os serviços ao container
-
 builder.Services.AddControllers();
 
 // Configura o Swagger
@@ -18,8 +17,19 @@ builder.Services.AddDbContext<InventarioContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// Adiciona o serviço de vendas ao container de dependências
+// Adiciona o serviço de Inventário ao container de dependências
 builder.Services.AddScoped<InventarioService>();
+
+// Configura CORS para permitir requisições de outras origens
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin() // Permite qualquer origem
+              .AllowAnyMethod() // Permite qualquer método (GET, POST, etc.)
+              .AllowAnyHeader(); // Permite qualquer cabeçalho
+    });
+});
 
 // Configuração do GeradorDeServicos, se necessário
 GeradorDeServicos.ServiceProvider = builder.Services.BuildServiceProvider();
@@ -32,6 +42,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger(); // Gera a documentação do Swagger
     app.UseSwaggerUI(); // Interface visual do Swagger
 }
+
+// Adiciona o middleware de CORS
+app.UseCors(); // Aplica a configuração de CORS antes de app.UseAuthorization()
 
 app.UseHttpsRedirection(); // Redireciona para HTTPS (caso necessário)
 

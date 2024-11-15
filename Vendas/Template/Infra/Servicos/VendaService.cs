@@ -52,7 +52,6 @@ namespace MicroserviceVendas.Servicos
             }
             return null;
         }
-        // Método para criar venda com validação de estoque e preço
         public async Task<Venda> CriarVenda(VendaDTO vendaDto)
         {
             // Valida o estoque
@@ -80,6 +79,18 @@ namespace MicroserviceVendas.Servicos
 
             _context.Vendas.Add(venda);
             await _context.SaveChangesAsync();
+
+            // Atualiza o estoque após a venda
+            var estoqueAtualizado = await _inventarioClient.PutAsJsonAsync(
+                $"api/inventario/{vendaDto.ProdutoId}/estoque",
+                new { ProdutoId = vendaDto.ProdutoId, Quantidade = vendaDto.Quantidade }
+            );
+
+            if (!estoqueAtualizado.IsSuccessStatusCode)
+            {
+                throw new InvalidOperationException("Erro ao atualizar o estoque após a venda.");
+            }
+
             return venda;
         }
 
