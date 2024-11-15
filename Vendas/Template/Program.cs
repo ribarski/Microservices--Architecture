@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MicroserviceVendas.Infra.Contexto;
 using MicroserviceVendas.Servicos;
-using MicroserviceVendas.Infra ;
+using MicroserviceVendas.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +24,17 @@ builder.Services.AddScoped<VendaService>();
 // Configuração do GeradorDeServicos, se necessário
 GeradorDeServicos.ServiceProvider = builder.Services.BuildServiceProvider();
 
+// Configura CORS para permitir requisições de outras origens
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin() // Permite qualquer origem (bom para desenvolvimento)
+              .AllowAnyMethod() // Permite qualquer método (GET, POST, etc.)
+              .AllowAnyHeader(); // Permite qualquer cabeçalho
+    });
+});
+
 var app = builder.Build();
 
 // Configura o pipeline de requisições HTTP
@@ -32,6 +43,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger(); // Gera a documentação do Swagger
     app.UseSwaggerUI(); // Interface visual do Swagger
 }
+
+// Adiciona o middleware de CORS
+app.UseCors(); // Certifique-se de que isso vem antes de app.UseAuthorization()
 
 app.UseHttpsRedirection(); // Redireciona para HTTPS (caso necessário)
 

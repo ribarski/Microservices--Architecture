@@ -1,15 +1,15 @@
-﻿using MicroserviceVendas;
-using MicroserviceVendas.Infra.Contexto;
+﻿using MicroservicePrecos;
+using MicroservicePrecos.Infra.Contexto;
 
-namespace MicroserviceVendas.Infra
+namespace MicroservicePrecos.Infra
 {
     public static class GeradorDeServicos
     {
         public static ServiceProvider ServiceProvider;
 
-        public static VendasContext CarregarContexto()
+        public static PrecosContext CarregarContexto()
         {
-            return ServiceProvider.GetService<VendasContext>();
+            return ServiceProvider.GetService<PrecosContext>();
         }
     }
 }

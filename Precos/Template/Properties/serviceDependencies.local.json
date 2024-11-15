@@ -6,7 +6,7 @@
     "sqlite1": {
       "secretStore": "LocalSecretsFile",
       "type": "sqlite.local",
-      "connectionId": "ConnectionStrings:Vendas.db",
+      "connectionId": "ConnectionStrings:Precos.db",
       "dynamicId": null
     }
   }
