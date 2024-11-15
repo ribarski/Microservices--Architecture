@@ -1,4 +1,4 @@
-Microserviço de Inventário
+# Microserviço de Inventário
 - Permite adicionar novos produtos com informações sobre nome, descrição e quantidade em estoque.
 - Consultar Produtos: Pode listar todos os produtos ou retornar detalhes de um produto específico, incluindo a quantidade em estoque.
 - Verificar Disponibilidade: Pode verificar se um produto possui estoque suficiente para a quantidade solicitada.
