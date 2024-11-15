@@ -1,32 +1,57 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using MicroserviceInventario.DTO;
+using Template.Infra.Servicos;
 
-namespace Exemplo
+namespace MicroserviceInventario.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExemploController : Controller
+    public class InventarioController : ControllerBase
     {
-        private IServExemplo _servExemplo;
+        private readonly InventarioService _inventarioService;
 
-        public ExemploController()
+        public InventarioController(InventarioService inventarioService)
         {
-            _servExemplo = new ServExemplo();
+            _inventarioService = inventarioService;
         }
 
-        [Route("/api/[Controller]/{id}")]
         [HttpGet]
-        public IActionResult Exemplo(int id)
+        public async Task<IActionResult> ObterTodosProdutos()
         {
-            try
-            {
-                var exemploDto = _servExemplo.Exemplo(id);
+            var produtos = await _inventarioService.ObterTodosProdutos();
+            return Ok(produtos);
+        }
 
-                return Ok(exemploDto);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObterProduto(int id)
+        {
+            var produto = await _inventarioService.ObterProdutoPorId(id);
+            return produto == null ? NotFound() : Ok(produto);
+        }
+
+        [HttpGet("{id}/disponibilidade")]
+        public async Task<IActionResult> VerificarDisponibilidade(int id, [FromQuery] int quantidade)
+        {
+            var disponivel = await _inventarioService.VerificarDisponibilidade(id, quantidade);
+            return Ok(new { Disponivel = disponivel });
+        }
+
+        [HttpPut("{id}/estoque")]
+        public async Task<IActionResult> AtualizarEstoque(int id, [FromBody] AtualizarEstoqueDTO dto)
+        {
+            if (id != dto.ProdutoId)
+                return BadRequest();
+
+            var resultado = await _inventarioService.AtualizarEstoque(dto);
+            return resultado ? Ok() : NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AdicionarProduto([FromBody] ProdutoDTO produtoDto)
+        {
+            var produto = await _inventarioService.AdicionarProduto(produtoDto);
+            return CreatedAtAction(nameof(ObterProduto), new { id = produto.Id }, produto);
         }
     }
 }

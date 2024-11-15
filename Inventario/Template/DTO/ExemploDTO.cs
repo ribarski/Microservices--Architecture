@@ -1,7 +1,15 @@
-﻿namespace Exemplo
+﻿namespace MicroserviceInventario.DTO
 {
-    public class ExemploDTO
+    public class ProdutoDTO
     {
-        public string Texto { get; set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public int QuantidadeEstoque { get; set; }
+    }
+
+    public class AtualizarEstoqueDTO
+    {
+        public int ProdutoId { get; set; }
+        public int Quantidade { get; set; }
     }
 }

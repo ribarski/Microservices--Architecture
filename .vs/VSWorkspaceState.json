@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Inventario",
     "\\Vendas",
     "\\Vendas\\Template"
   ],
-  "SelectedNode": "\\Vendas\\MicroserviceVendas.sln",
+  "SelectedNode": "\\Inventario\\TemplateMicrosservico.sln",
   "PreviewInSolutionExplorer": false
 }
