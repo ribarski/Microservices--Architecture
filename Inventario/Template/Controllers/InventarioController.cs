@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using MicroserviceInventario.DTO;
+using MicroserviceInventario.Infra;
 using MicroserviceInventario.Services;
 
 namespace MicroserviceInventario.Controllers

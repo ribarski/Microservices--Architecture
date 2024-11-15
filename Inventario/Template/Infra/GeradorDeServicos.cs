@@ -1,5 +1,4 @@
-﻿using MicroserviceInventario;
-using MicroserviceInventario.Infra.Contexto;
+﻿using MicroserviceInventario.Infra.Contexto;
 
 namespace MicroserviceInventario.Infra
 {
