@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 75c7645fc84b4fec54658bb263f887ae6bd4ba70
 using System.ComponentModel.DataAnnotations;
 
 namespace MicroservicePrecos.Infra

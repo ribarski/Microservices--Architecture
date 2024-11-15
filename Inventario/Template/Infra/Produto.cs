@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.ComponentModel.DataAnnotations;
+=======
+﻿using System.ComponentModel.DataAnnotations;
+>>>>>>> 75c7645fc84b4fec54658bb263f887ae6bd4ba70
 
 namespace MicroserviceInventario.Infra
 {
