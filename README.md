@@ -1,7 +1,7 @@
 # Microservices--Architecture 
-Microserviço de Inventário -- Gerenciar o estoque de produtos.
 
-Cadastrar Produtos:
+Microserviço de Inventário 
+Gerenciar o estoque de produtos.
 - Permite adicionar novos produtos com informações sobre nome, descrição e quantidade em estoque.
 - Consultar Produtos: Pode listar todos os produtos ou retornar detalhes de um produto específico, incluindo a quantidade em estoque.
 - Verificar Disponibilidade: Pode verificar se um produto possui estoque suficiente para a quantidade solicitada (útil para o microserviço de Vendas).
