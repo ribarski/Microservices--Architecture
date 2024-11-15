@@ -1,11 +1,12 @@
-# Microservices--Architecture -- Como os microserviços funcionam
-# Microserviço de Inventário -- Gerenciar o estoque de produtos.
+# Microservices--Architecture 
+Microserviço de Inventário -- Gerenciar o estoque de produtos.
 
-*/Cadastrar Produtos: Permite adicionar novos produtos com informações sobre nome, descrição e quantidade em estoque.
-Consultar Produtos: Pode listar todos os produtos ou retornar detalhes de um produto específico, incluindo a quantidade em estoque.
-Verificar Disponibilidade: Pode verificar se um produto possui estoque suficiente para a quantidade solicitada (útil para o microserviço de Vendas).
-Atualizar Estoque: Após uma venda, o estoque de um produto é atualizado subtraindo a quantidade vendida.
-Fluxo: Quando uma venda é criada, o microserviço de Vendas faz uma requisição ao microserviço de Inventário para verificar se a quantidade de um produto está disponível. Se estiver, o estoque é atualizado (quantidade subtraída) e a venda é processada.
+Cadastrar Produtos:
+- Permite adicionar novos produtos com informações sobre nome, descrição e quantidade em estoque.
+- Consultar Produtos: Pode listar todos os produtos ou retornar detalhes de um produto específico, incluindo a quantidade em estoque.
+- Verificar Disponibilidade: Pode verificar se um produto possui estoque suficiente para a quantidade solicitada (útil para o microserviço de Vendas).
+- Atualizar Estoque: Após uma venda, o estoque de um produto é atualizado subtraindo a quantidade vendida.
+- Fluxo: Quando uma venda é criada, o microserviço de Vendas faz uma requisição ao microserviço de Inventário para verificar se a quantidade de um produto está disponível. Se estiver, o estoque é atualizado (quantidade subtraída) e a venda é processada.
 
 # Microserviço de Preço -- Gerenciar os preços dos produtos.
 
