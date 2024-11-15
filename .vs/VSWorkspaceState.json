@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Inventario",
-    "\\Vendas",
-    "\\Vendas\\Template"
+    "\\Inventario\\Template",
+    "\\Inventario\\Template\\DTO",
+    "\\Inventario\\Template\\Infra"
   ],
-  "SelectedNode": "\\Inventario\\TemplateMicrosservico.sln",
+  "SelectedNode": "\\Inventario\\README.md",
   "PreviewInSolutionExplorer": false
 }
